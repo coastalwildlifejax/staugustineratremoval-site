@@ -1,7 +1,7 @@
 /* ===== CONFIG — shared by every page ===== */
 var CONFIG = {
   PHONE: "(904) 855-9490",          // main line; swap for a dedicated CallRail number to track this domain
-  WEBHOOK_URL: ""                    // GoHighLevel workflow "Inbound Webhook" trigger URL
+  WEBHOOK_URL: "https://services.leadconnectorhq.com/hooks/9j3BmGLLNFju0BVKEoGH/webhook-trigger/ea517280-3569-42e4-969e-2f72fb1cd490"  // GoHighLevel workflow "Inbound Webhook" trigger URL
 };
 /* ========================================= */
 

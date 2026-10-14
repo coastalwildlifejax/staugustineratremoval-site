@@ -251,7 +251,7 @@ def footer():
   <a class="btn btn-navy" href="#quote">Free Inspection</a>
 </div>
 
-<script src="/assets/site.js"></script>
+<script src="/assets/site.js?v=2"></script>
 </body>
 </html>
 """
