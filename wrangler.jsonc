@@ -1,6 +1,6 @@
 // Cloudflare Workers static-assets config. Deploy command: npx wrangler deploy
 {
-  "name": "staugustineratremoval-site",
+  "name": "st-augustine-rat-removal",
   "compatibility_date": "2026-09-01",
   "assets": {
     "directory": ".",
