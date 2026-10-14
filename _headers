@@ -3,5 +3,8 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
 
-/index.html
-  Cache-Control: public, max-age=300
+/assets/*
+  Cache-Control: public, max-age=3600
+
+/_build/*
+  X-Robots-Tag: noindex

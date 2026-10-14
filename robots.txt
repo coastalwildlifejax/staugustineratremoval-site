@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /_build/
+
+Sitemap: https://staugustineratremoval.com/sitemap.xml
