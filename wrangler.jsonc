@@ -1,0 +1,10 @@
+// Cloudflare Workers static-assets config. Deploy command: npx wrangler deploy
+{
+  "name": "staugustineratremoval-site",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": ".",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  }
+}

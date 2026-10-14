@@ -3,8 +3,12 @@
 One-page lead funnel for Coastal Wildlife & Pest Control. Static HTML, no build step.
 
 ## Deploy
-Cloudflare Pages is connected to this repo. Every push to `main` deploys to production automatically.
-Pushes to any other branch get a preview URL.
+Cloudflare (Workers static assets) is connected to this repo. Every push to `main` deploys to production automatically.
+- Build command: (blank)
+- Deploy command: `npx wrangler deploy` (reads `wrangler.jsonc`; files listed in `.assetsignore` are not published)
+
+## Editing pages
+Page content lives in `_build/build.py`. Edit it, run `python3 _build/build.py`, commit the generated HTML.
 
 ## Config
 Edit the `CONFIG` block near the bottom of `index.html`:
