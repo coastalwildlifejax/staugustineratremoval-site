@@ -357,9 +357,9 @@
 
     // Barrier outline: soft glow + crisp line
     var pts = sc.shield.map(function (p) { return p.join(","); }).join(" ");
-    el("polygon", { points: pts, class: "rs-sh-fill" }, this.gShield);
-    el("polygon", { points: pts, class: "rs-sh-glow", filter: "url(#rsBlur)" }, this.gShield);
-    el("polygon", { points: pts, class: "rs-sh-line", pathLength: "1" }, this.gShield);
+    el("polygon", { points: pts, class: "rs-sh-fill", fill: "#F7953A", opacity: 0 }, this.gShield);
+    el("polygon", { points: pts, class: "rs-sh-glow", filter: "url(#rsBlur)", fill: "none", stroke: "#F7953A", "stroke-width": 16, opacity: 0 }, this.gShield);
+    el("polygon", { points: pts, class: "rs-sh-line", pathLength: "1", fill: "none", stroke: "#F7953A", "stroke-width": 4, "stroke-dasharray": 1, "stroke-dashoffset": 1 }, this.gShield);
 
     this.list.innerHTML = "";
     sc.entries.forEach(function (e, i) {
@@ -380,12 +380,12 @@
       sr.style.transitionDelay = (0.5 + i * 0.14) + "s";
       // Open-hole pulse
       var h = el("g", { class: "rs-hole", transform: "translate(" + e.at[0] + "," + e.at[1] + ")" }, self.gSeals);
-      el("circle", { r: 9, class: "rs-hole-ring" }, h);
+      el("circle", { r: 9, class: "rs-hole-ring", fill: "none", stroke: "#C8402F", "stroke-width": 2.5 }, h);
       // Numbered marker + leader
       var m = el("g", { class: "rs-mark", "data-i": i }, self.gMarks);
-      el("line", { x1: e.marker[0], y1: e.marker[1], x2: e.at[0], y2: e.at[1], class: "rs-lead" }, m);
-      el("circle", { cx: e.marker[0], cy: e.marker[1], r: 15, class: "rs-mk" }, m);
-      var t = el("text", { x: e.marker[0], y: e.marker[1] + 5, "text-anchor": "middle", class: "rs-mk-t" }, m);
+      el("line", { x1: e.marker[0], y1: e.marker[1], x2: e.at[0], y2: e.at[1], class: "rs-lead", stroke: "#C8402F", "stroke-width": 1.5, "stroke-dasharray": "4 4" }, m);
+      el("circle", { cx: e.marker[0], cy: e.marker[1], r: 15, class: "rs-mk", fill: "#C8402F", stroke: "#fff", "stroke-width": 3 }, m);
+      var t = el("text", { x: e.marker[0], y: e.marker[1] + 5, "text-anchor": "middle", class: "rs-mk-t", fill: "#fff", "font-size": 14, "font-weight": 800, "font-family": "Inter,system-ui,sans-serif" }, m);
       t.textContent = i + 1;
       e.markEl = m;
       var li = document.createElement("li");
@@ -464,7 +464,7 @@
   };
 
   Sim.prototype.ring = function (x, y, cls) {
-    var c = el("circle", { cx: x, cy: y, r: 6, class: cls }, this.gFx);
+    var c = el("circle", { cx: x, cy: y, r: 6, class: cls, fill: "none", stroke: cls === "rs-fx-good" ? "#DD7419" : "#C8402F", "stroke-width": 3 }, this.gFx);
     this.fx.push({ el: c, t: 0 });
   };
 

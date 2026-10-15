@@ -16,6 +16,13 @@ PHONE_DISPLAY = "(904) 855-9490"
 TEL = "tel:+19048559490"
 BIZ_ID = SITE + "/#business"
 
+
+def _ver(name):
+    """Short content hash so browsers fetch an asset again whenever it changes."""
+    import hashlib
+    with open(os.path.join(ROOT, "assets", name), "rb") as f:
+        return hashlib.md5(f.read()).hexdigest()[:8]
+
 CHECK = '<svg viewBox="0 0 24 24" fill="#F7953A" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>'
 PHONE_ICON = '<svg width="20" height="20" viewBox="0 0 24 24" fill="#F7953A" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>'
 
@@ -87,7 +94,7 @@ def head(title, desc, path, og_title):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css?v={_ver('site.css')}">
 
 <!-- Google Tag Manager: paste your GTM snippet here (fires Google Ads conversion on the 'lead_submit' dataLayer event) -->
 """
@@ -266,8 +273,8 @@ def footer():
   <a class="btn btn-navy" href="#quote">Free Inspection</a>
 </div>
 
-<script src="/assets/site.js?v=3"></script>
-<script src="/assets/rat-sim.js?v=3" defer></script>
+<script src="/assets/site.js?v={_ver('site.js')}"></script>
+<script src="/assets/rat-sim.js?v={_ver('rat-sim.js')}" defer></script>
 <script src="https://cdn.callrail.com/companies/403239938/b31ee02e3ae59db658df/12/swap.js"></script>
 </body>
 </html>
