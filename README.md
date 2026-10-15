@@ -1,20 +1,24 @@
 # staugustineratremoval.com
 
-One-page lead funnel for Coastal Wildlife & Pest Control. Static HTML, no build step.
+One-page lead funnel + area pages for St. Augustine Rat Removal (a Coastal Wildlife & Pest Control company).
+Plain static HTML/CSS/JS in `public/`. No framework, no build step on Cloudflare.
 
-## Deploy
-Cloudflare (Workers static assets) is connected to this repo. Every push to `main` deploys to production automatically.
-- Build command: (blank)
-- Deploy command: `npx wrangler deploy` (reads `wrangler.jsonc`; files listed in `.assetsignore` are not published)
+## Deploy — Cloudflare Pages (same setup as jaxpestremoval)
+Pages → Create → Connect to Git → `coastalwildlifejax/staugustineratremoval-site`
+- Production branch: `main`
+- Framework preset: **None**
+- Build command: *(blank)*
+- Build output directory: **`public`**
+
+Every push to `main` deploys. Custom domains: `staugustineratremoval.com` + `www`.
 
 ## Editing pages
-Page content lives in `_build/build.py`. Edit it, run `python3 _build/build.py`, commit the generated HTML.
+Page content lives in `_build/build.py`. Edit it, run `python3 _build/build.py` (writes into `public/`), commit.
 
-## Config
-Edit the `CONFIG` block near the bottom of `index.html`:
-- `PHONE`: number shown and dialed on every call button
-- `WEBHOOK_URL`: GoHighLevel workflow "Inbound Webhook" URL that receives form leads
+## Config — `public/assets/site.js`
+- `WEBHOOK_URL`: GoHighLevel "Inbound Webhook" trigger that receives form leads.
+- Phone numbers are printed in the HTML (`PHONE_DISPLAY` / `TEL` in `_build/build.py`) so CallRail's swap.js can replace them.
 
-## Tracking events (dataLayer)
-- `lead_submit`: form submitted successfully
+## Tracking (dataLayer events)
+- `lead_submit`: form submitted (with `service_area`)
 - `phone_click`: any call button tapped

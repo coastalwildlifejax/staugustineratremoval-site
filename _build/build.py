@@ -3,12 +3,12 @@
 
 Shared header, form, footer and schema live here so all pages stay in sync.
 Edit content below, then run:  python3 _build/build.py
-Commit the generated .html files — Cloudflare Pages serves them as-is.
+Commit the generated .html files in public/ — Cloudflare Pages serves that folder as-is.
 """
 import json
 import os
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "public")  # Cloudflare Pages output dir
 SITE = "https://staugustineratremoval.com"
 PHONE_E164 = "+1-904-855-9490"
 # Printed in the HTML so CallRail swap.js can find and replace it with the tracking number
