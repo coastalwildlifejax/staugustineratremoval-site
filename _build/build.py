@@ -226,6 +226,18 @@ def areas_html(heading, intro, exclude=None, include_home=False, alt=False):
 """
 
 
+def sim_section(scene="home", heading="See How Rats Get In — and How We Stop Them",
+                intro="Every building has entry points. Watch where rats get in, then flip the switch to see what a sealed, protected building looks like."):
+    return f"""
+<section class="block simsec" id="how-rats-get-in">
+  <div class="wrap">
+    <div class="center"><span class="kicker">Interactive</span><h2>{heading}</h2><p>{intro}</p></div>
+    <div class="ratsim" data-ratsim data-scene="{scene}"></div>
+  </div>
+</section>
+"""
+
+
 def final(h2, p):
     return f"""<section class="final">
   <div class="wrap">
@@ -255,6 +267,7 @@ def footer():
 </div>
 
 <script src="/assets/site.js?v=3"></script>
+<script src="/assets/rat-sim.js?v=3" defer></script>
 <script src="https://cdn.callrail.com/companies/403239938/b31ee02e3ae59db658df/12/swap.js"></script>
 </body>
 </html>
@@ -329,7 +342,7 @@ def build_home():
     </div>
   </div>
 </section>
-
+""" + sim_section("home") + """
 <section class="block">
   <div class="wrap why">
     <div>
@@ -400,6 +413,7 @@ def build_location(p):
   </div>
 </section>
 """
+    body += sim_section(p.get("sim_scene", "home"), p.get("sim_h2", "See How Rats Get In — and How We Stop Them"), p.get("sim_intro", "Watch where rats get in, then flip the switch to see what a sealed, protected building looks like."))
     body += p["plan_html"]
 
     hoods = "\n".join(f"        <li>{n}<small>{s}</small></li>" if s else f"        <li>{n}</li>" for n, s in p["hoods"])
@@ -460,6 +474,9 @@ def plan_cards(h2, intro, cards, note=None):
 
 DOWNTOWN = {
     "slug": "downtown-st-augustine",
+    "sim_scene": "restaurant",
+    "sim_h2": "Downtown Buildings Are Under Constant Pressure",
+    "sim_intro": "Restaurants and homes downtown face the same problem: rats probing every gap, every night. Flip the switch to see what protection does.",
     "crumb": "Downtown St. Augustine",
     "title": "Downtown St. Augustine Rat Removal &amp; Rodent Prevention",
     "og_title": "Rat Removal &amp; Rodent Protection in Downtown St. Augustine",
