@@ -1,14 +1,14 @@
 /* ===== CONFIG — shared by every page ===== */
+// Phone numbers are printed in the HTML (see _build/build.py) so CallRail's swap.js can replace them
+// with the tracking number. Don't set them from JS — that would overwrite CallRail's swap.
 var CONFIG = {
-  PHONE: "(904) 855-9490",          // main line; swap for a dedicated CallRail number to track this domain
   WEBHOOK_URL: "https://services.leadconnectorhq.com/hooks/9j3BmGLLNFju0BVKEoGH/webhook-trigger/ea517280-3569-42e4-969e-2f72fb1cd490"  // GoHighLevel workflow "Inbound Webhook" trigger URL
 };
 /* ========================================= */
 
 (function(){
-  var digits = CONFIG.PHONE.replace(/\D/g,"");
-  document.querySelectorAll(".js-tel").forEach(function(a){ a.href = "tel:+1" + digits.slice(-10); });
-  document.querySelectorAll(".js-phone").forEach(function(s){ s.textContent = CONFIG.PHONE; });
+  // Whatever number is on the page (CallRail's tracking number once swapped)
+  function phone(){ var el = document.querySelector(".js-phone"); return el ? el.textContent : "us"; }
   var yr = document.getElementById("yr"); if (yr) yr.textContent = new Date().getFullYear();
 
   // Persist ad-click attribution so it survives page reloads
@@ -43,7 +43,7 @@ var CONFIG = {
     };
     keys.forEach(function(k){ payload[k] = attr(k); });
 
-    if (!CONFIG.WEBHOOK_URL) { err.textContent = "Online booking isn't live yet. Please call us at " + CONFIG.PHONE + "."; err.style.display = "block"; return; }
+    if (!CONFIG.WEBHOOK_URL) { err.textContent = "Online booking isn't live yet. Please call " + phone() + "."; err.style.display = "block"; return; }
     btn.disabled = true; btn.textContent = "Sending…";
     // Form-encoded + no-cors avoids a CORS preflight, which GHL webhooks don't answer
     fetch(CONFIG.WEBHOOK_URL, { method:"POST", mode:"no-cors", body: new URLSearchParams(payload) })
@@ -54,7 +54,7 @@ var CONFIG = {
       })
       .catch(function(){
         btn.disabled = false; btn.textContent = "Get My Free Inspection";
-        err.textContent = "Something went wrong. Please call us at " + CONFIG.PHONE + ".";
+        err.textContent = "Something went wrong. Please call " + phone() + ".";
         err.style.display = "block";
       });
   });
