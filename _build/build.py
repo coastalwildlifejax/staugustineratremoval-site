@@ -23,8 +23,8 @@ def _ver(name):
     with open(os.path.join(ROOT, "assets", name), "rb") as f:
         return hashlib.md5(f.read()).hexdigest()[:8]
 
-CHECK = '<svg viewBox="0 0 24 24" fill="#F7953A" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>'
-PHONE_ICON = '<svg width="20" height="20" viewBox="0 0 24 24" fill="#F7953A" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>'
+CHECK = '<svg viewBox="0 0 24 24" fill="#F57C00" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>'
+PHONE_ICON = '<svg width="20" height="20" viewBox="0 0 24 24" fill="#F57C00" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>'
 
 AREAS = [
     {"slug": "downtown-st-augustine", "name": "Downtown St. Augustine",
@@ -84,7 +84,7 @@ def head(title, desc, path, og_title):
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/img/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#2B2A2B">
+<meta name="theme-color" content="#0A1A3A">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{og_title}">
 <meta property="og:description" content="{desc}">
@@ -159,7 +159,7 @@ def form_card(heading, sub):
         </form>
       </div>
       <div class="thanks" id="thanks">
-        <svg width="56" height="56" viewBox="0 0 24 24" fill="#F7953A" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-2 15-5-5 1.4-1.4L10 14.2l7.6-7.6L19 8z"/></svg>
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="#F57C00" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-2 15-5-5 1.4-1.4L10 14.2l7.6-7.6L19 8z"/></svg>
         <h2>Got it — we're on it.</h2>
         <p class="sub">A specialist will call you shortly. Need us sooner?</p>
         <a class="btn btn-orange js-tel" href="{TEL}">Call <span class="js-phone">{PHONE_DISPLAY}</span></a>
@@ -318,6 +318,8 @@ def build_home():
         ["Free inspection — we find every entry point", "Trapping, exclusion &amp; sanitation by one local team",
          "Exclusion work backed by a written warranty", "Licensed &amp; insured in Florida"],
         "Book Your Free Rat Inspection", "Takes 30 seconds. A local specialist will call you back fast.")
+    body += sim_section("home", "Watch How Rats Get Into a St. Augustine Home",
+                        "This is what happens every night in an unsealed house. Flip the switch to see what a protected home looks like — tap any number to zoom in.")
     body += """
 <section class="block">
   <div class="wrap">
@@ -349,7 +351,7 @@ def build_home():
     </div>
   </div>
 </section>
-""" + sim_section("home") + """
+
 <section class="block">
   <div class="wrap why">
     <div>
