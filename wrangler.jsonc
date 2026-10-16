@@ -1,6 +1,6 @@
 // Cloudflare Worker (static assets in public/). Deployed by .github/workflows/deploy.yml on every push to main.
 {
-  "name": "staugustineratremoval-site-2",
+  "name": "st-augustine-rat-removal",
   "compatibility_date": "2026-09-01",
   "assets": {
     "directory": "./public",
