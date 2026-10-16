@@ -8,3 +8,17 @@
 
 /_build/*
   X-Robots-Tag: noindex
+
+# Pages always revalidate so updates show up on the next load
+/
+  Cache-Control: no-cache
+/downtown-st-augustine/
+  Cache-Control: no-cache
+/st-augustine-beach/
+  Cache-Control: no-cache
+/ponte-vedra/
+  Cache-Control: no-cache
+/version.txt
+  Cache-Control: no-cache
+/sitemap.xml
+  Cache-Control: no-cache
